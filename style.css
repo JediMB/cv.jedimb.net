@@ -453,7 +453,7 @@ decorative-element {
     speak: none;
 }
 
-*:has(invisible-element) {
+*:has(> invisible-element) {
     position: relative;
 }
 
