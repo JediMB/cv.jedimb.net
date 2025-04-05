@@ -106,8 +106,9 @@ header {
                 background-color 1s ease-in-out;
 }
 
-theme-switch {
+.theme-switch {
     margin: 0.5rem 0.5rem 0 0;
+    border: none;
     position: fixed;
     right: 0;
     width: 7ch;
@@ -121,8 +122,12 @@ theme-switch {
     cursor: pointer;
 }
 
-theme-switch:hover {
+.theme-switch:hover,
+.theme-switch:focus,
+.theme-switch:focus-visible {
     background-color: var(--theme-switch-hover-bg-color);
+    outline: 2px solid var(--header-border-color);
+    outline-offset: 2px;
 }
 
 .link-icons {
@@ -136,7 +141,16 @@ top-bar {
     font-size: 0.75em;
 }
 
-[select-language] {
+.lang-buttons {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    gap: 3px;
+    list-style: none;
+}
+
+.lang-buttons button {
     width: 42.67px;
     height: 32px;
     overflow: hidden;
@@ -151,24 +165,25 @@ top-bar {
     -webkit-appearance: initial;
 }
 
-[select-language] > img {
+.lang-buttons button > img {
     width: 100%;
     height: 100%;
 }
 
-[select-language]:disabled {
+.lang-buttons button:disabled {
     border-color: var(--language-border-color);
 }
 
-[select-language]:not(:disabled) > img {
+.lang-buttons button:not(:disabled) > img {
     filter: grayscale(100%);
 }
 
-[select-language]:not(:disabled):focus > img {
+.lang-buttons button:not(:disabled):focus > img {
     filter: none;
 }
 
-[select-language]:not(:disabled):hover, [select-language]:not(:disabled):focus {
+.lang-buttons button:not(:disabled):hover,
+.lang-buttons button:not(:disabled):focus {
     cursor: pointer;
     border-color: var(--language-focus-border-color);
     transform-origin: top center;
@@ -177,11 +192,11 @@ top-bar {
 }
 
 @media (hover: hover) {
-    [select-language]:disabled:hover > img {
+    .lang-buttons button:disabled:hover > img {
         filter: grayscale(100%);
     }
 
-    [select-language]:not(:disabled):hover > img {
+    .lang-buttons button:not(:disabled):hover > img {
         filter: none;
     }
 }
@@ -233,23 +248,40 @@ h3 {
     text-transform: uppercase;
 }
 
-.experience > ul, .education > ul, .links ul, .grades {
+.experience > ul,
+.education > ul,
+.links ul, .grades {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.experience > ul > li, .education > ul > li {
+.experience > ul > li,
+.education > ul > li {
     margin-bottom: 1em;
 }
 
-.experience > ul ul, .education > ul ul {
+.experience div > ul,
+.education div > ul {
+    padding: 0;
+    list-style-position: inside;
     list-style-type: disc;
 }
+.experience div > ul > li{
+    padding-inline: 3rem;
+    text-indent: -1.2rem;
+}
 
-.experience > ul ul li:hover, .experience > ul ul li:focus {
+.experience div > ul > li:hover,
+.experience div > ul > li:focus {
+    border-radius: 5px;
     background-color: var(--highlight-bg-color);
     color: var(--highlight-text-color);
+}
+
+.experience > ul div > ul ul,
+.education > ul div > ul ul {
+    list-style-type: circle;
 }
 
 .location {
@@ -356,6 +388,7 @@ h3 {
 
 .divider {
     color: var(--header-border-color);
+    speak: none;
 }
 
 .hover-focus:hover {

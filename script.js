@@ -20,23 +20,31 @@ languageSelectors?.forEach(selector => {
     });
 });
 
-const themeSwitch = document.querySelector('theme-switch');
+const themeSwitch = document.querySelector('.theme-switch');
 const themeIcons = themeSwitch?.querySelectorAll('svg');
 
-if (htmlElement.hasAttribute('dark-mode'))
-    themeIcons?.forEach(icon => icon.classList.toggle('hidden'));
+const switchThemeIcon = () => {
+    themeIcons?.forEach(icon => {
+        icon.classList.toggle('hidden');
+        if (!(icon.classList.contains('hidden')))
+            themeSwitch.setAttribute('aria-label', icon.getAttribute('button-label'));
+    });
+}
 
-themeSwitch?.setAttribute('tabindex', '0');
-themeSwitch?.addEventListener('keydown', (event) => {
-    if (event?.key === 'Enter') {
-        themeSwitch.click();
-    }
-});
+if (htmlElement.hasAttribute('dark-mode'))
+    switchThemeIcon();
+
+//  themeSwitch?.setAttribute('tabindex', '0');
+// themeSwitch?.addEventListener('keydown', (event) => {
+//     if (event?.key === 'Enter') {
+//         themeSwitch.click();
+//     }
+// });
 
 themeSwitch?.addEventListener('click', () => {
     htmlElement.toggleAttribute('dark-mode');
 
-    themeIcons?.forEach(icon => icon.classList.toggle('hidden'));
+    switchThemeIcon();
 });
 
 const toggles = Array.from(document.querySelectorAll('[details-toggle]'));
@@ -116,39 +124,45 @@ if (skills && skills.length > 1) {
     const skillsSorted = skills.map(skill => skill.cloneNode(true));
     skillsSorted.sort((a, b) => a.textContent.localeCompare(b.textContent));
 
-    for (let i = 0; i < skills.length; i++) {
-        skills[i].replaceWith(skillsSorted[i]);
+    skillsSorted.forEach((skill, skillIndex) => {
+        skills[skillIndex].replaceWith(skill);
         
-        if (skillsSorted[i].hasAttribute('sub-skills'))
+        if (skill.hasAttribute('sub-skills'))
         {
-            skillsSorted[i].setAttribute('tabindex', '0');
-            skillsSorted[i].setAttribute('aria-label', `${skillsSorted[i].textContent} (contains sub-skills)`);
-            skillsSorted[i].addEventListener('keydown', (event) => {
+            skill.setAttribute('tabindex', '0');
+            skill.setAttribute('aria-label', `${skill.textContent} (contains sub-skills)`);
+            skill.setAttribute('aria-expanded', 'false');
+            skill.addEventListener('keydown', (event) => {
                 if (event?.key === 'Enter') {
-                    skillsSorted[i].click();
+                    skill.click();
                 }
             });
 
             const subSkills = [];
-            const subSkillNames = skillsSorted[i].getAttribute('sub-skills').split(';');
+            const subSkillNames = skill.getAttribute('sub-skills').split(';');
             subSkillNames.sort();
             
-            subSkillNames.forEach(subSkillText => {
+            subSkillNames.forEach((subSkillText, subIndex) => {
                 const subSkill = document.createElement('li');
                 subSkill.textContent = subSkillText;
-                subSkill.setAttribute('sub-skill', null);
+                subSkill.setAttribute('sub-skill', '');
+                const id = `skill-${skillIndex}-${subIndex}`;
+                subSkill.setAttribute('id', id);
+                skill.setAttribute('aria-controls',
+                    `${skill.getAttribute('aria-controls') ?? ''}${subIndex ? ' ' : ''}${id}`);
                 subSkill.style.setProperty('display', 'none');
                 skillList.insertBefore(subSkill, 
                     subSkills.length ?
                     subSkills[subSkills.length - 1].nextElementSibling :
-                    skillsSorted[i].nextElementSibling);
+                    skill.nextElementSibling);
                 subSkills.push(subSkill);
             });
         
-            skillsSorted[i].addEventListener('click', () => {
-                skillsSorted[i].toggleAttribute('skill-selected');
+            skill.addEventListener('click', () => {
+                skill.toggleAttribute('skill-selected');
+                skill.setAttribute('aria-expanded', skill.hasAttribute('skill-selected'));
 
-                if (skillsSorted[i].hasAttribute('skill-selected')) {
+                if (skill.hasAttribute('skill-selected')) {
                     subSkills.forEach(subSkill => {
                         subSkill.style.removeProperty('display');
                     });
@@ -160,5 +174,5 @@ if (skills && skills.length > 1) {
                 });
             });
         }
-    }
+    });
 }

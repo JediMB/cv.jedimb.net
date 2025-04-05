@@ -10,7 +10,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
 
         <link rel="stylesheet" href="normalize.css" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style.css?ver=20250405" />
+        <script src="script.js?ver=20250405" defer></script>
 
         <script>
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -31,36 +32,41 @@
     <body>
         <header>
             <top-bar>
-                <div>
-                    <button select-language="sv-SE" aria-label="Swedish language button">
-                        <img src="images/se.svg" alt="Swedish flag" />
-                    </button>
-                    <button select-language="en-US" aria-label="US English language button">
-                        <img src="images/us.svg" alt="United States flag" />
-                    </button>
-                </div>
+                <ul class="lang-buttons">
+                    <li>
+                        <button select-language="sv-SE" aria-label="Swedish language button">
+                            <img src="images/se.svg" alt="Swedish flag" />
+                        </button>
+                    </li>
+                    <li>
+                        <button select-language="en-US" aria-label="US English language button">
+                            <img src="images/us.svg" alt="United States flag" />
+                        </button>
+                    </li>
+                </ul>
                 <div>
                     <span lang="sv-SE">Senast uppdaterad:</span>
                     <span lang="en-US">Last updated:</span>
-                    2024-11-28
+                    2025-04-05
                 </div>
             </top-bar>
             <h1>
                 M Berntson
-                <span class="divider">//</span>
+                <span class="divider" aria-hidden="true">//</span>
                 <span lang="sv-SE" class="text-50">Full-Stack/.NET-utvecklare</span>
                 <span lang="en-US" class="text-50">Full-Stack/.NET developer</span>
             </h1>
         </header>
 
-        <theme-switch>
-            <svg id="dark-mode" aria-label="Switch to dark mode" width="2rem" height="2rem">
+        <button class="theme-switch" aria-label="Switch between light and dark mode">
+            <svg id="dark-mode" aria-hidden="true" button-label="Switch to dark mode" width="2rem" height="2rem">
                 <use xlink:href="#svg-darkmode" href="#svg-darkmode"></use>
             </svg>
-            <svg id="light-mode" class="hidden" aria-label="Switch to light mode" width="2rem" height="2rem">
+            <svg id="light-mode" aria-hidden="true" button-label="Switch to light mode" width="2rem" height="2rem"
+                class="hidden">
                 <use xlink:href="#svg-lightmode" href="#svg-lightmode"></use>
             </svg>
-        </theme-switch>
+        </button>
 
         <main>
 
@@ -98,15 +104,48 @@
 
                     <ul>
                         <li>
-                            <div details-toggle tabindex="0" aria-expanded="false" aria-controls="experience-2">
+                            <div details-toggle tabindex="0" aria-expanded="false" aria-controls="experience-3">
                                 <h3 lang="sv-SE">
-                                    Full-Stack Developer (LIA)
+                                    Full Stack-utvecklare
                                 </h3>
                                 <h3 lang="en-US">
-                                    Full-Stack Developer (internship)
+                                    Full Stack Developer
+                                </h3>
+                                <div class="location">WCAG Networks AB</div>
+                                <div>2025-03-10 – <span lang="sv-SE">nu</span><span lang="en-US">now</span></div>
+                            </div>
+                            <div details-hidden aria-hidden="true" id="experience-3">
+                                <ul lang="sv-SE">
+                                    <li>Fokus på tillgänglighet
+                                        <ul>
+                                            <li>Skriver och implementerar bild- och tabellbeskrivningar för eböcker.</li>
+                                            <li>Arbetar med Python-skript.</li>
+                                            <li>Vidareutvecklar PHP-baserade webbsidor.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul lang="en-US">
+                                    <li>Focus on accessibility
+                                        <ul>
+                                            <li>Writing and implementing image and table descriptions for ebooks</li>
+                                            <li>Working with Python scripts</li>
+                                            <li>Further developing PHP-based websites.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div details-toggle tabindex="0" aria-expanded="false" aria-controls="experience-2">
+                                <h3 lang="sv-SE">
+                                    Full Stack-utvecklare (LIA)
+                                </h3>
+                                <h3 lang="en-US">
+                                    Full Stack Developer (internship)
                                 </h3>
                                 <div class="location">Knowit AB</div>
-                                <div>2023 - 2024</div>
+                                <div>2023 – 2024</div>
                             </div>
                             <div details-hidden aria-hidden="true" id="experience-2">
                                 <ul lang="sv-SE">
@@ -186,7 +225,7 @@
                                 <h3 lang="sv-SE">Allt-i-allo</h3>
                                 <h3 lang="en-US">Various roles</h3>
                                 <div class="location">Migeo ekonomiska förening</div>
-                                <div>2014 - 2022</div>
+                                <div>2014 – 2022</div>
                             </div>
                             <div details-hidden aria-hidden="true" id="experience-1">
                                 <ul lang="sv-SE">
@@ -215,7 +254,7 @@
                                 <h3 lang="sv-SE">Webbutvecklare</h3>
                                 <h3 lang="en-US">Web Developer</h3>
                                 <div class="location">Valderas Consulting AB</div>
-                                <div>2008 - 2009</div>
+                                <div>2008 – 2009</div>
                             </div>
                             <div details-hidden aria-hidden="true" id="experience-0">
                                 <ul lang="sv-SE">
@@ -267,7 +306,7 @@
                                 <h3 lang="sv-SE">.NET-utvecklare</h3>
                                 <h3 lang="en-US">.NET developer</h3>
                                 <div class="location">Teknikhögskolan, Gävle</div>
-                                <div>2022 - 2024</div>
+                                <div>2022 – 2024</div>
                             </div>
                             <div details-hidden aria-hidden="true" id="education-1">
                                 <div lang="sv-SE" class="grading-scale">
@@ -351,7 +390,7 @@
                                 <h3 lang="sv-SE">Teknikprogrammet</h3>
                                 <h3 lang="en-US">Technology</h3>
                                 <div class="location">Polhemsskolan, Gävle</div>
-                                <div>2001 - 2004</div>
+                                <div>2001 – 2004</div>
                             </div>
                             <div details-hidden aria-hidden="true" id="education-0">
                                 <ul lang="sv-SE">
@@ -395,7 +434,7 @@
                         <li>Docker</li>
                         <li>Visual Studio</li>
                         <li>Visual Studio Code</li>
-                        <li sub-skills="Debian;Gnome;Cinnamon;CLI">Linux</li>
+                        <li sub-skills="Debian;GNOME;Cinnamon;CLI">Linux</li>
                         <li>Node.js</li>
                     </ul>
                 </section>
@@ -442,5 +481,4 @@
             </symbol>
         </svg>
     </body>
-    <script src="script.js"></script>
 </html>
