@@ -288,7 +288,7 @@ h3 {
     font-style: italic;
 }
 
-.location::before {
+.location decorative-element::before {
     margin-right: 0.25em;
     content: '@';
     font-weight: 700;
@@ -339,7 +339,8 @@ h3 {
     cursor: pointer;
 }
 
-.skills li[sub-skills]::before {
+.skills li[sub-skills] decorative-element::before {
+    margin-inline-end: 0.25em;
     content: '▸';
 }
 
@@ -354,7 +355,8 @@ h3 {
     transition: transform 0.5s;
 }
 
-.skills li[skill-selected]::before {
+.skills li[skill-selected] decorative-element::before {
+    margin-inline-end: 0.125em;
     content: '▿';
 }
 
@@ -365,6 +367,10 @@ h3 {
     animation-timing-function: ease-in-out;
     animation-direction: alternate;
     animation-iteration-count: infinite;
+}
+
+.skills ul ul {
+    display: contents;
 }
 
 @keyframes sub-skill {
@@ -441,6 +447,26 @@ h3 {
 
 [details-toggle] + [details-hidden] {
     display: none;
+}
+
+decorative-element {
+    speak: none;
+}
+
+*:has(invisible-element) {
+    position: relative;
+}
+
+invisible-element {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    font-size: 0;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
 }
 
 @keyframes slide-out {

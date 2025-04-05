@@ -117,6 +117,11 @@ if (toggles && toggleCount > 0) {
     bounceAnotherOne();
 }
 
+const locations = Array.from(document.querySelectorAll('.location'));
+locations.forEach(location => {
+    location.innerHTML = `<decorative-element aria-hidden="true"></decorative-element>${location.innerHTML}`;
+});
+
 const skillList = document.querySelector('.skills ul');
 const skills = Array.from(document.querySelectorAll('.skills ul li'));
 
@@ -129,6 +134,13 @@ if (skills && skills.length > 1) {
         
         if (skill.hasAttribute('sub-skills'))
         {
+            const subSkills = [];
+            const subSkillNames = skill.getAttribute('sub-skills').split(';');
+
+            if (subSkillNames.length < 1)
+                return;
+
+            skill.innerHTML = `<decorative-element aria-hidden="true"></decorative-element>${skill.innerHTML}`;
             skill.setAttribute('tabindex', '0');
             skill.setAttribute('aria-label', `${skill.textContent} (contains sub-skills)`);
             skill.setAttribute('aria-expanded', 'false');
@@ -138,10 +150,11 @@ if (skills && skills.length > 1) {
                 }
             });
 
-            const subSkills = [];
-            const subSkillNames = skill.getAttribute('sub-skills').split(';');
             subSkillNames.sort();
             
+            const subSkillList = document.createElement('ul');
+            subSkillList.setAttribute('aria-label', 'Sub-skills');
+
             subSkillNames.forEach((subSkillText, subIndex) => {
                 const subSkill = document.createElement('li');
                 subSkill.textContent = subSkillText;
@@ -151,12 +164,10 @@ if (skills && skills.length > 1) {
                 skill.setAttribute('aria-controls',
                     `${skill.getAttribute('aria-controls') ?? ''}${subIndex ? ' ' : ''}${id}`);
                 subSkill.style.setProperty('display', 'none');
-                skillList.insertBefore(subSkill, 
-                    subSkills.length ?
-                    subSkills[subSkills.length - 1].nextElementSibling :
-                    skill.nextElementSibling);
+                subSkillList.appendChild(subSkill);
                 subSkills.push(subSkill);
             });
+            skillList.insertBefore(subSkillList, skill.nextSibling)
         
             skill.addEventListener('click', () => {
                 skill.toggleAttribute('skill-selected');
