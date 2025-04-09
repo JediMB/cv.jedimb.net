@@ -1,0 +1,135 @@
+@media print {
+    .lang-buttons {
+        display: none;
+    }
+
+    top-bar {
+        justify-content: end;
+    }
+
+    header {
+        border-bottom: 2px solid black;
+        padding-block-end: 0.5em;
+    }
+
+    h1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    decorative-element {
+        display: none;
+    }
+
+    print-element {
+        display: inline;
+    }
+
+    .theme-switch {
+        display: none;
+    }
+
+    body {
+        padding-inline: 1em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    p {
+        margin-block: calc(2em / 3);
+    }
+
+    main {
+        margin-inline: 0;
+    }
+
+    main,
+    main > * {
+        display: contents;
+    }
+
+    section {
+        margin-block-end: 0;
+    }
+
+    .hover-focus:hover {
+        transform: none;
+    }
+
+    [details-toggle] {
+        padding-inline: 0;
+        padding-block-end: 0;
+        break-inside: avoid-page;
+        break-after: avoid-page
+    }
+
+    [details-toggle] + [details-hidden] {
+        display: block;
+        break-before: avoid-page;
+    }
+
+    [details-hidden]:not( .grades) {
+        break-inside: avoid-page;
+    }
+
+    .experience div > ul {
+        list-style-position: outside;
+        padding-inline-start: 1em;
+    }
+
+    .experience div > ul > li {
+        padding-inline: 0;
+        text-indent: 0;
+    }
+
+    .grading-scale {
+        margin-block: 0.75em 0.5em;
+        display: flex;
+        flex-direction: row;
+        gap: 1.5em;
+    }
+
+    .grading-scale ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5em;
+        list-style: none;
+    }
+
+    .grading-scale ul li {
+        list-style: none;
+    }
+
+    .grades {
+        columns: 2;
+    }
+
+    .grades li {
+        padding-inline: 0;
+    }
+
+    .skills > ul {
+        display: block;
+        columns: 3;
+    }
+
+    .skills li {
+        text-align: start;
+    }
+
+    .skills ul ul {
+        display: block;
+        list-style: circle;
+        list-style-position: inside;
+        break-inside: avoid;
+    }
+
+    [sub-skill] {
+        display: list-item !important;
+        font-style: italic;
+    }
+
+    .links {
+        order: 99;
+    }
+}

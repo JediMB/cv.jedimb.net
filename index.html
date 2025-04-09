@@ -4,14 +4,17 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>M Berntson CV</title>
+        
+        <link rel="icon" type="image/x-icon" href="/favicon.svg" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
 
         <link rel="stylesheet" href="normalize.css" />
-        <link rel="stylesheet" href="style.css?ver=20250405" />
-        <script src="script.js?ver=20250405" defer></script>
+        <link rel="stylesheet" href="style.css?ver=20250409" />
+        <link rel="stylesheet" href="print.css?ver=20250409" media="print" />
+        <script src="script.js?ver=20250409" defer></script>
 
         <script>
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -47,12 +50,12 @@
                 <div>
                     <span lang="sv-SE">Senast uppdaterad:</span>
                     <span lang="en-US">Last updated:</span>
-                    2025-04-05
+                    2025-04-09
                 </div>
             </top-bar>
             <h1>
                 M Berntson
-                <span class="divider" aria-hidden="true">//</span>
+                <decorative-element class="divider" aria-hidden="true">//</decorative-element>
                 <span lang="sv-SE" class="text-50">Full-Stack/.NET-utvecklare</span>
                 <span lang="en-US" class="text-50">Full-Stack/.NET developer</span>
             </h1>
@@ -78,7 +81,7 @@
                     </h2>
                     <div class="hover-focus" lang="sv-SE">
                         <p>
-                            Nyutexaminerad <strong>.NET-utvecklare</strong> med toppbetyg i samtliga programmeringskurser
+                            <strong>Full Stack/.NET-utvecklare</strong> med toppbetyg i samtliga programmeringskurser
                             och ett brinnande intresse för kodning och utveckling.
                         </p>
                         <p>
@@ -87,7 +90,7 @@
                     </div>
                     <div class="hover-focus" lang="en-US">
                         <p>
-                            Recently graduated <strong>.NET developer</strong> with top grades in all programming courses
+                            <strong>Full Stack/.NET developer</strong> with top grades in all programming courses
                             and a burning interest in coding and development.
                         </p>
                         <p>
@@ -112,26 +115,22 @@
                                     Full Stack Developer
                                 </h3>
                                 <div class="location">WCAG Networks AB</div>
-                                <div>2025-03-10 – <span lang="sv-SE">nu</span><span lang="en-US">now</span></div>
+                                <div>2025-03-10 – <span lang="sv-SE">nu</span><span lang="en-US">2025-04-09</span></div>
                             </div>
                             <div details-hidden aria-hidden="true" id="experience-3">
                                 <ul lang="sv-SE">
-                                    <li>Fokus på tillgänglighet
-                                        <ul>
-                                            <li>Skriver och implementerar bild- och tabellbeskrivningar för eböcker.</li>
-                                            <li>Arbetar med Python-skript.</li>
-                                            <li>Vidareutvecklar PHP-baserade webbsidor.</li>
-                                        </ul>
-                                    </li>
+                                    <li>Vidareutvecklade PHP-baserade webbsidor.</li>
+                                    <li>Arbetade med och förbättrade Python-skript.</li>
+                                    <li>Skrev och implementerade bild- och tabellbeskrivningar för eböcker.</li>
+                                    <li>Tillgänglighetsanpassade PDF-dokument i Adope Acrobat Pro.</li>
+                                    <li><i>Anställning avslutades med erbjudande om ny anställning med 40% lägre lön.</i></li>
                                 </ul>
                                 <ul lang="en-US">
-                                    <li>Focus on accessibility
-                                        <ul>
-                                            <li>Writing and implementing image and table descriptions for ebooks</li>
-                                            <li>Working with Python scripts</li>
-                                            <li>Further developing PHP-based websites.</li>
-                                        </ul>
-                                    </li>
+                                    <li>Further developed PHP-based websites.</li>
+                                    <li>Worked with and improved Python scripts</li>
+                                    <li>Wrote and implemented image and table descriptions for ebooks.</li>
+                                    <li>Accessibility-adjusted PDF documents in Adobe Acrobat Pro.</li>
+                                    <li><i>Contract was canceled with offer of a new contract with 40% lower salary.</i></li>
                                 </ul>
                             </div>
                         </li>
@@ -281,15 +280,21 @@
                     <ul>
                         <li>
                             <svg width="1em" height="1em"><use xlink:href="#svg-email" href="#svg-email"></use></svg>
-                            <a href="mailto:jedimb@live.se" title="jedimb@live.se">E-mail</a>
+                            <a href="mailto:jedimb@live.se" title="jedimb@live.se">
+                                E-mail<print-element>: jedimb@live.se</print-element>
+                            </a>
                         </li>
                         <li>
                             <svg width="1em" height="1em"><use xlink:href="#svg-github" href="#svg-github"></use></svg>
-                            <a href="https://github.com/jedimb" target="_blank" title="github.com/jedimb">GitHub</a>
+                            <a href="https://github.com/jedimb" target="_blank" title="github.com/jedimb">
+                                GitHub<print-element>: https://github.com/jedimb</print-element>
+                            </a>
                         </li>
                         <li>
                             <svg width="1em" height="1em"><use xlink:href="#svg-linkedin" href="#svg-linkedin"></use></svg>
-                            <a href="https://www.linkedin.com/in/jedimb/" target="_blank" title="linkedin.com/in/jedimb">LinkedIn</a>
+                            <a href="https://www.linkedin.com/in/jedimb/" target="_blank" title="linkedin.com/in/jedimb">
+                                LinkedIn<print-element>: https://www.linkedin.com/in/jedimb/</print-element>
+                            </a>
                         </li>
                     </ul>
                 </section>
@@ -313,7 +318,7 @@
                                     Betygsskala från IG till VG.
                                 </div>
                                 <div lang="en-US" class="grading-scale">
-                                    <div>Grading scale</div>
+                                    <div>Grading scale<print-element>:</print-element></div>
                                     <ul>
                                         <li>IG: Fail</li>
                                         <li>G: Pass</li>
@@ -459,7 +464,7 @@
 
         </main>
 
-        <svg xmlns="http://www.w3.org/2000/svg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
             <symbol id="svg-lightmode" viewBox="0 -960 960 960" fill="black">
                 <path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/>
             </symbol>

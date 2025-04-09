@@ -227,7 +227,7 @@ h1 {
     line-height: 1em;
 }
 
-h1 > span {
+h1 > * {
     margin-inline-start: 1rem;
     font-family: monospace;
     line-break: strict;
@@ -394,7 +394,6 @@ h3 {
 
 .divider {
     color: var(--header-border-color);
-    speak: none;
 }
 
 .hover-focus:hover {
@@ -451,6 +450,7 @@ h3 {
 
 decorative-element {
     speak: none;
+    user-select: none;
 }
 
 *:has(> invisible-element) {
@@ -467,6 +467,10 @@ invisible-element {
     z-index: -1;
     pointer-events: none;
     user-select: none;
+}
+
+print-element {
+    display: none;
 }
 
 @keyframes slide-out {
