@@ -17,6 +17,12 @@
         flex-direction: column;
     }
 
+    section:not(.profile) h2 {
+        margin-bottom: 0.4em;
+        border-bottom: 1.25px solid black;
+        padding-bottom: 0.4em;
+    }
+
     decorative-element {
         display: none;
     }
