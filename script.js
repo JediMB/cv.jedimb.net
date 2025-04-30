@@ -20,6 +20,15 @@ languageSelectors?.forEach(selector => {
     });
 });
 
+const bodyElement = htmlElement.querySelector('body');
+const checkPDF = bodyElement?.querySelector('.check-pdf');
+
+bodyElement?.toggleAttribute('pdf-mode', checkPDF?.checked);
+
+checkPDF?.addEventListener('change', (e) => {
+    bodyElement.toggleAttribute('pdf-mode', e.target.checked);
+});
+
 const themeSwitch = document.querySelector('.theme-switch');
 const themeIcons = themeSwitch?.querySelectorAll('svg');
 
@@ -33,13 +42,6 @@ const switchThemeIcon = () => {
 
 if (htmlElement.hasAttribute('dark-mode'))
     switchThemeIcon();
-
-//  themeSwitch?.setAttribute('tabindex', '0');
-// themeSwitch?.addEventListener('keydown', (event) => {
-//     if (event?.key === 'Enter') {
-//         themeSwitch.click();
-//     }
-// });
 
 themeSwitch?.addEventListener('click', () => {
     htmlElement.toggleAttribute('dark-mode');

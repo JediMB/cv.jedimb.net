@@ -77,6 +77,30 @@
     --link-icon-color: rgb(var(--col-white));
 }
 
+.check-pdf {
+    position: absolute;
+    appearance: none;
+    font-size: 1rem;
+    right: 0;
+    box-sizing: content-box;
+    padding: 0.1em;
+    width: 4ch;
+    height: 1em;
+    cursor: pointer;
+}
+
+.check-pdf:hover {
+    border: 1px solid black;
+}
+
+.check-pdf:checked {
+    background-color: black;
+}
+.check-pdf:checked::before {
+    color: white;
+    content: 'PDF';
+}
+
 a {
     color: var(--link-color);
     text-decoration: none;
@@ -315,69 +339,6 @@ h3 {
     background-color: var(--highlight-bg-color);
 }
 
-.skills ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.3em 0.125em;
-    list-style: none;
-    padding: 0;
-}
-
-.skills li {
-    flex-grow: 1;
-    border-radius: 1em;
-    background-color: var(--skill-bg-color);
-    padding: 0.25em 0.5em;
-    text-align: center;
-    color: var(--skill-text-color);
-}
-
-.skills li[sub-skills] {
-    --skill-bg-color: var(--skill-super-bg-color);
-    --skill-text-color: var(--skill-super-text-color);
-    cursor: pointer;
-}
-
-.skills li[sub-skills] decorative-element::before {
-    margin-inline-end: 0.25em;
-    content: '▸';
-}
-
-.skills li[sub-skills]:hover, .skills li[sub-skills]:focus, .skills li[skill-selected] {
-    --skill-bg-color: var(--skill-focus-bg-color);
-}
-
-.skills li[skill-selected] {
-    flex-grow: 100;
-    width: 100%;
-    transform: scale(110%);
-    transition: transform 0.5s;
-}
-
-.skills li[skill-selected] decorative-element::before {
-    margin-inline-end: 0.125em;
-    content: '▿';
-}
-
-.skills li[sub-skill] {
-    --skill-bg-color: var(--skill-sub-bg-color-0);
-    animation-name: sub-skill;
-    animation-duration: 2.5s;
-    animation-timing-function: ease-in-out;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-}
-
-.skills ul ul {
-    display: contents;
-}
-
-@keyframes sub-skill {
-    0%      { background-color: var(--skill-sub-bg-color-0); }
-    100%    { background-color: var(--skill-sub-bg-color-100); }
-}
-
 .text-50 {
     font-size: 0.5em;
 }
@@ -469,10 +430,6 @@ invisible-element {
     user-select: none;
 }
 
-print-element {
-    display: none;
-}
-
 @keyframes slide-out {
     0%      { max-height: 0; }
     100%    { max-height: 400px; }
@@ -491,6 +448,76 @@ print-element {
 @keyframes fade-in {
     0%      { opacity: 0; }
     100%    { opacity: 1.0;}    
+}
+
+@media screen {
+    print-element,
+    .web-hidden {
+        display: none !important;
+    }
+    
+    .skills ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.3em 0.125em;
+        list-style: none;
+        padding: 0;
+    }
+
+    .skills li {
+        flex-grow: 1;
+        border-radius: 1em;
+        background-color: var(--skill-bg-color);
+        padding: 0.25em 0.5em;
+        text-align: center;
+        color: var(--skill-text-color);
+    }
+
+    .skills li[sub-skills] {
+        --skill-bg-color: var(--skill-super-bg-color);
+        --skill-text-color: var(--skill-super-text-color);
+        cursor: pointer;
+    }
+
+    .skills li[sub-skills] decorative-element::before {
+        margin-inline-end: 0.25em;
+        content: '▸';
+    }
+
+    .skills li[sub-skills]:hover, .skills li[sub-skills]:focus, .skills li[skill-selected] {
+        --skill-bg-color: var(--skill-focus-bg-color);
+    }
+
+    .skills li[skill-selected] {
+        flex-grow: 100;
+        width: 100%;
+        transform: scale(110%);
+        transition: transform 0.5s;
+    }
+
+    .skills li[skill-selected] decorative-element::before {
+        margin-inline-end: 0.125em;
+        content: '▿';
+    }
+
+    .skills li[sub-skill] {
+        --skill-bg-color: var(--skill-sub-bg-color-0);
+        animation-name: sub-skill;
+        animation-duration: 2.5s;
+        animation-timing-function: ease-in-out;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    }
+
+    .skills ul ul {
+        display: contents;
+    }
+
+    @keyframes sub-skill {
+        0%      { background-color: var(--skill-sub-bg-color-0); }
+        100%    { background-color: var(--skill-sub-bg-color-100); }
+    }
 }
 
 @media screen and (max-width: 800px) {
