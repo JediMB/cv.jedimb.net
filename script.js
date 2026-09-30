@@ -49,6 +49,20 @@ themeSwitch?.addEventListener('click', () => {
     switchThemeIcon();
 });
 
+/** @type {HTMLHeadingElement} */
+const profileHeader = document.querySelector('#h2-profile');
+profileHeader?.addEventListener('click', () => {
+    if (!bodyElement.hasAttribute('pdf-mode'))
+        return;
+
+    let sibling = profileHeader.nextElementSibling;
+
+    while (sibling) {
+        sibling.classList.toggle('hidden');
+        sibling = sibling.nextElementSibling;
+    }
+});
+
 const toggles = Array.from(document.querySelectorAll('[details-toggle]'));
 const toggleCount = toggles.length;
 let toggleClicked = false;

@@ -272,6 +272,10 @@ h3 {
     text-transform: uppercase;
 }
 
+body[pdf-mode] #h2-profile {
+    cursor: pointer;
+}
+
 .experience > ul,
 .education > ul,
 .links ul, .grades {
